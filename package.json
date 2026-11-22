@@ -1,0 +1,54 @@
+{
+	"name": "@aoshizuku/pi-bettertui",
+	"version": "0.1.0",
+	"private": false,
+	"type": "module",
+	"description": "A calm, dense transcript for pi: compact tool rows, read-only activity groups, and a fixed-height thinking window",
+	"license": "MIT",
+	"author": "AoShizuku",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AoShizuku/pi-bettertui.git"
+	},
+	"homepage": "https://github.com/AoShizuku/pi-bettertui#readme",
+	"bugs": {
+		"url": "https://github.com/AoShizuku/pi-bettertui/issues"
+	},
+	"keywords": [
+		"pi-package",
+		"pi-extension",
+		"tui",
+		"transcript",
+		"thinking"
+	],
+	"pi": {
+		"extensions": [
+			"./src/index.ts"
+		]
+	},
+	"files": [
+		"src",
+		"!src/**/*.test.ts"
+	],
+	"scripts": {
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"check": "npm run typecheck && npm run test"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*",
+		"typebox": "*"
+	},
+	"devDependencies": {
+		"@earendil-works/pi-coding-agent": "^1.5.0",
+		"@earendil-works/pi-tui": "^1.5.0",
+		"@types/node": "^22.0.0",
+		"typebox": "1.3.27",
+		"typescript": "^5.9.0",
+		"vitest": "^3.2.4"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
