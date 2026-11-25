@@ -35,11 +35,9 @@ export class MarkedBlock implements Component {
 	) {}
 
 	render(width: number): string[] {
-		const lines = this.block.render(width);
-		if (lines.length <= this.line) return lines;
-		// Markdown hands out its cached array; never write into it.
-		const out = [...lines];
-		out[this.line] = placeMarker(out[this.line]!, this.marker());
+		// Components hand out cached arrays; never write into one.
+		const out = [...this.block.render(width)];
+		if (out.length > this.line) out[this.line] = placeMarker(out[this.line]!, this.marker());
 		return out;
 	}
 

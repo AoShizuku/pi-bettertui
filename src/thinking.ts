@@ -397,7 +397,7 @@ export class ThinkingSlot implements Component {
 	render(width: number): string[] {
 		const role = this.fold.timeline.foldRole(this.anchor);
 		if (role.kind === "hidden") return [];
-		if (role.kind === "single") return this.view.render(width);
+		if (role.kind === "single") return [...this.view.render(width)];
 		const paint = paintSegment(role.segment, width, {
 			timeline: this.fold.timeline,
 			config: this.fold.getConfig(),
