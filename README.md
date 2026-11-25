@@ -42,7 +42,7 @@
 
 Pi 原生给每条工具套 `Box` + 背景 + `Spacer(1)`，bash 还默认展示 5 行输出。`pi-bettertui` 用 `renderShell: "self"` 重画：
 
-- `read/grep/find/ls`：一行 `Read(path:range) · N lines` / `Grep(pattern in path) · N matches`。
+- `read/grep/find/ls`：一行 `Read(path:range) · N lines` / `Grep(pattern in path) · N matches`；读图片写 `image`，读取时的模型不支持图片输入则写 `image · model has no image input`（pi 1.6.0 起）。
 - `edit`：`Edit(path) · +N −M`。
 - `write`：`Write(path) · N lines`。
 - `bash/powershell`：`Bash(描述) · Done · N lines · 2.0s`；失败时显示最后 2 行错误。展开后先列出完整命令（`$ cmd`，自动换行，最多 12 行），再列输出。

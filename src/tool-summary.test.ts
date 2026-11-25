@@ -16,6 +16,21 @@ describe("tool summaries", () => {
 		expect(summarizeResult("read", result("one\ntwo\nthree"), { file_path: "a.ts" })).toBe("3 lines");
 	});
 
+	it("says when the model could not see an image it read", () => {
+		const image = (details?: unknown): ToolResultSnapshot => ({
+			content: [
+				{ type: "text", text: "Read image file [image/png]" },
+				{ type: "image", data: "AA==", mimeType: "image/png" },
+			],
+			details,
+			isError: false,
+		});
+		expect(summarizeResult("read", image(), { path: "a.png" })).toBe("image");
+		expect(summarizeResult("read", image({ imageUnsupportedByModel: "text-only-1" }), { path: "a.png" })).toBe(
+			"image · model has no image input",
+		);
+	});
+
 	it("summarizes grep matches and files", () => {
 		const output = "src/a.ts:1: foo\nsrc/a.ts:2: foo\nsrc/b.ts:4: foo";
 		expect(summarizeResult("grep", result(output), { pattern: "foo" })).toBe("3 matches in 2 files");

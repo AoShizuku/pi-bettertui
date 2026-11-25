@@ -169,7 +169,10 @@ export function summarizeResult(name: string, result: ToolResultSnapshot, args: 
 	const text = resultText(result);
 	switch (name) {
 		case "read": {
-			if (resultImageCount(result) > 0) return "image";
+			if (resultImageCount(result) > 0) {
+				// pi (1.6.0 on) names the model here when it has no image input and only saw a placeholder.
+				return details(result).imageUnsupportedByModel ? "image · model has no image input" : "image";
+			}
 			const lines = truncationTotal(result) ?? countLines(text);
 			return plural(lines, "line") + (truncated(result) ? " · truncated" : "");
 		}
