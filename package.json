@@ -1,6 +1,6 @@
 {
 	"name": "@aoshizuku/pi-bettertui",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"private": false,
 	"type": "module",
 	"description": "A calm, dense transcript for pi: compact tool rows, read-only activity groups, and a fixed-height thinking window",
